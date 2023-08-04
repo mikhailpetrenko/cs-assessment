@@ -1,0 +1,13 @@
+        X_LARGE_ARRAY   LARGE_ARRAY    MED_ARRAY    SMALL_ARRAY    TINY_ARRAY
+
+insert  1.197480215 s   9.291485 ms    241.282 μs   93.509 μs     68.587 μs
+append  11.358184 ms    882.149 μs     218.176 μs   162.203 μs    146.895 μs
+
+For small to med arrays execution time is almost the same (not really noticeable) for both methods. Though, for large and especially extra large difference inceases as heck. That ensure us to stay away from insert methods for such arrays. 
+
+Interesting point is that "insert" function works longer for mid-large arrays, though in case of small arrays it works faster than "append" one. 
+
+The reason of difference between two methods is time complexity. When we shift an element at the beginning of the array, we're enforced to "touch" every element to move it by "one step". Therefore, our time complexity gets O(n), where n - is a number of elements in the array, which could be large. 
+
+Though, append method time complexity is only O(1), which means we "touch" only one element and throw it to the end of the array. At least I got it this way :D:D:D
+
